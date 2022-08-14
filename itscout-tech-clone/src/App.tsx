@@ -1,4 +1,5 @@
 import './App.css'
+import Footer from './components/footer/footer'
 import Navbar from './components/navbar/navbar'
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <Navbar />
    <h1> Welcome to</h1> 
    <h1> The best way to work</h1>
+    <Footer />
     </>
     )
 }
