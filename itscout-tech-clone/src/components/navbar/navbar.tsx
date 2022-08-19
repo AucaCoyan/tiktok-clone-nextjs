@@ -4,13 +4,26 @@ import NavLogo from "./navlogo";
 export default function Navbar() {
     return (
         <>
+    <div className="bg-deepblue flex text-white align-middle">
         <p>in Whatsapp </p>
-        <p className="text-green-700">this is a navbar</p>
-        <Navlink title='home' destination='#' />
-        <Navlink title='what we do' destination='#' />
-        <NavLogo />
-        <Navlink title='blog' destination='#' />
-        <Navlink title='contact us' destination='#' />
+        <div className="snap-center">
+            <ul>
+                <Navlink title='home' destination='#' />
+            <li>
+                <Navlink title='what we do' destination='#' />
+            </li>
+            <li>
+                <NavLogo />
+            </li>
+            <li>
+                <Navlink title='blog' destination='#' />
+            </li>
+            <li>
+                <Navlink title='contact us' destination='#' />
+            </li>
+            </ul>
+       </div>
+    </div>
         </>
     )
 }
