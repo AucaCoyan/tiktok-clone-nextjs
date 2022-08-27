@@ -7,6 +7,7 @@ const nextConfig = {
       "www.spectrumcollections.com",
       "images.unsplash.com",
       "media-exp1.licdn.com",
+      "lh3.googleusercontent.com",
     ],
   },
 };
