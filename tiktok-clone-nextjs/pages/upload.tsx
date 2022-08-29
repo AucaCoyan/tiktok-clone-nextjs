@@ -4,6 +4,7 @@ import { FaCloudUploadAlt } from "react-icons/fa";
 import { MdDelete, MdVideogameAsset } from "react-icons/md";
 import axios from "axios";
 import { SanityAssetDocument } from "@sanity/client";
+import { BASE_URL } from "../utils";
 
 import { topics } from "../utils/constants";
 import useAuthStore from "../store/authStore";
@@ -62,7 +63,7 @@ const Upload = () => {
         topic: category,
       };
 
-      await axios.post("http://localhost:3000/api/post", document);
+      await axios.post("${BASE_URL}/api/post", document);
       router.push("/");
     }
   };
