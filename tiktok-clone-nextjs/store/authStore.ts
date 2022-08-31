@@ -3,7 +3,7 @@ import { persist } from "zustand/middleware";
 import axios from "axios";
 
 const authStore = (set: any) => ({
-  userProfule: null,
+  userProfile: null,
   addUser: (user: any) => set({ userProfile: user }),
   removeUser: () => set({ userProfile: null }),
 });
