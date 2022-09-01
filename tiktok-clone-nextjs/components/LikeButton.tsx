@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { MdFavorite } from "react-icons/md";
+
 import useAuthStore from "../store/authStore";
 
 interface IProps {
@@ -41,9 +42,16 @@ const LikeButton = ({ likes, handleLike, handleDislike }: IProps) => {
         )}
         <p className="text-md font-semibold">{likes?.length || 0}</p>
       </div>
-
     </div>
   );
 };
 
 export default LikeButton;
+
+const my_arrow_func = (param1: string) => {
+  console.log(param1);
+};
+
+function my_normal_func(param2: string) {
+  console.log("qwer");
+}
