@@ -10,8 +10,10 @@ import { BASE_URL } from "../../utils";
 import { Video } from "../../types";
 import Link from "next/link";
 import useAuthStore from "../../store/authStore";
-import Comments from "../../components/Comments";
+
 import LikeButton from "../../components/LikeButton";
+import Comments from "../../components/Comments";
+
 
 interface IProps {
   postDetails: Video;
@@ -22,7 +24,10 @@ const Detail = ({ postDetails }: IProps) => {
   const [playing, setPlaying] = useState(false);
   const [isVideoMuted, setIsVideoMuted] = useState(false);
   const router = useRouter();
-  const { userProfile: any } = useAuthStore();
+  const { userProfile }: any = useAuthStore();
+  const [comment, setComment] = useState("");
+  const [isPostingComment, setIsPostingComment] = useState(false);
+
 
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -54,6 +59,35 @@ const Detail = ({ postDetails }: IProps) => {
 
   if (!post) return null;
 
+  const handleLike = async (like: boolean) => {
+    if (userProfile) {
+      const { data } = await axios.put(`${BASE_URL}/api/like`, {
+        userId: userProfile._id,
+        postId: post._id,
+        like,
+      });
+
+      setPost({ ...post, likes: data.likes });
+    }
+  };
+
+  const addComment = async (e) => {
+    e.preventDefault();
+
+    if (userProfile && comment) {
+      setIsPostingComment(true);
+
+      const { data } = await axios.put(`${BASE_URL}/api/post/${post._id}`, {
+        userId: userProfile._id,
+        comment,
+      });
+
+      setPost({ ...post, comments: data.comments });
+      setComment("");
+      setIsPostingComment(false);
+    }
+  };
+
   return (
     <div className="flex w-full absolute left-0 top-0 bg-white flex-wrap lg:flex-nowrap">
       <div className="relative flex-2 w-[1000px] lg:w-9/12 flex justify-center items-center bg-black">
@@ -65,11 +99,10 @@ const Detail = ({ postDetails }: IProps) => {
         <div className="relative">
           <div className="lg:h-[100vh] h-[60vh]">
             <video
+              src={post.video.asset.url}
               ref={videoRef}
               loop
               onClick={onVideoClick}
-              src={post.video.asset.url}
-              className="h-full cursor-pointer"
             ></video>
           </div>
           <div className="absolute top-[45%] left-[45%] cursor-pointer">
@@ -95,7 +128,7 @@ const Detail = ({ postDetails }: IProps) => {
       <div className="relative w-[1000px] md:w-[900px] lg:w-[700px]">
         <div className="lg:mt-20 mt-10">
           <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
-            <div className="md:w-20 md:h-20 w-16 h-16 ml-4">
+            <div className="m-4 md:w-20 md:h-20 w-16 h-16">
               <Link href="/">
                 <>
                   <Image
@@ -126,9 +159,21 @@ const Detail = ({ postDetails }: IProps) => {
           </div>
           <p className="px-10 text-lg text-gray-600">{post.caption}</p>
           <div className="mt-10 px-10">
-            {userProfile && <LikeButton handleLike={handleLike(true) handleDislike={handleLike(false)}} />}
+            {userProfile && (
+              <LikeButton
+                likes={post.likes}
+                handleLike={() => handleLike(true)}
+                handleDislike={() => handleLike(false)}
+              />
+            )}
+            <Comments
+              comment={comment}
+              setComment={setComment}
+              addComment={addComment}
+              isPostingComment={isPostingComment}
+              comments={post.comments}
+            />
           </div>
-          <Comments />
         </div>
       </div>
     </div>
