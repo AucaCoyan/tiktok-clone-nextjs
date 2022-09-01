@@ -10,8 +10,10 @@ import { BASE_URL } from "../../utils";
 import { Video } from "../../types";
 import Link from "next/link";
 import useAuthStore from "../../store/authStore";
+
 import LikeButton from "../../components/LikeButton";
 import Comments from "../../components/Comments";
+
 
 interface IProps {
   postDetails: Video;
@@ -25,6 +27,7 @@ const Detail = ({ postDetails }: IProps) => {
   const { userProfile }: any = useAuthStore();
   const [comment, setComment] = useState("");
   const [isPostingComment, setIsPostingComment] = useState(false);
+
 
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -43,6 +46,17 @@ const Detail = ({ postDetails }: IProps) => {
       videoRef.current.muted = isVideoMuted;
     }
   }, [isVideoMuted]);
+
+  const handleLike = async (like: boolean) => {
+    if (userProfile) {
+      const response = await axios.put(`${BASE_URL}/api/like`, {
+        userId: userProfile._id,
+        postId: post._id,
+        like,
+      });
+    }
+  };
+
   if (!post) return null;
 
   const handleLike = async (like: boolean) => {
@@ -130,7 +144,7 @@ const Detail = ({ postDetails }: IProps) => {
             </div>
             <div>
               <Link href="/">
-                <div className="mt-3 flex flex-col first-letter gap-2 ">
+                <div className="mt-3 flex flex-col gap-2 ">
                   <p className="flex gap-2 items-center md:text-md font-bold text-primary">
                     {post.postedBy.userName}
                     {` `}
@@ -143,7 +157,6 @@ const Detail = ({ postDetails }: IProps) => {
               </Link>
             </div>
           </div>
-
           <p className="px-10 text-lg text-gray-600">{post.caption}</p>
           <div className="mt-10 px-10">
             {userProfile && (
