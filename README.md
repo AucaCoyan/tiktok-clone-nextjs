@@ -1,4 +1,4 @@
-<div style="text-align: center">
+<div align="center">
 
 # TikTik video social media
 
@@ -10,15 +10,31 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/AucaCoyan/tiktok-clone-nextjs)
 ![GitHub](https://img.shields.io/github/license/AucaCoyan/tiktok-clone-nextjs)
 
-# See the live version [here: https://tiktok-clone-nextjs-five.vercel.app/](https://tiktok-clone-nextjs-five.vercel.app/)
+### This is a mockup of Tik Tok, the video social media platform. Made with React, NextJS, Typescript, Sanity and Tailwind libraries.
+
+### 👇 Here you can gaze the fundamentals of the site 👇
+
+# Main view
+
+![](https://raw.githubusercontent.com/AucaCoyan/tiktok-clone-nextjs/main/utils/Tiktik1.PNG)
+
+# Profile view
+
+![](https://raw.githubusercontent.com/AucaCoyan/tiktok-clone-nextjs/main/utils/Tiktik2.PNG)
+
+# Search query
+
+![](https://raw.githubusercontent.com/AucaCoyan/tiktok-clone-nextjs/main/utils/Tiktik3.PNG)
+
+# It's Mobile responsive!
+
+![](https://raw.githubusercontent.com/AucaCoyan/tiktok-clone-nextjs/main/utils/Tiktik4.PNG)
+
+# See the live version 🔗[Here](https://tiktok-clone-nextjs-five.vercel.app/)🔗
+
+# To-Do
 
 </div>
-
-# Next.js template
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## To-Do
 
 As any project, there are always tasks to do:
 
