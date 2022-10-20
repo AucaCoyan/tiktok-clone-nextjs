@@ -12,8 +12,10 @@ import Logo from "../utils/tiktik-logo.png";
 import { createOrGetUser } from "../utils";
 import useAuthStore from "../store/authStore";
 
+import {IUser} from "../types"
+
 const Navbar = () => {
-  const { userProfile, addUser, removeUser } = useAuthStore();
+  const { userProfile: IUser, addUser, removeUser } = useAuthStore();
   const [searchValue, setSearchValue] = useState("");
 
   const handleSearch = (e: { preventDefault: () => void }) => {
