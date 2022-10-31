@@ -57,7 +57,7 @@ const Detail = ({ postDetails }: IProps) => {
     }
   };
 
-  const addComment = async (e: any) => {
+  const addComment = async (e) => {
     e.preventDefault();
 
     if (userProfile && comment) {
