@@ -30,8 +30,6 @@
 
 ![](https://raw.githubusercontent.com/AucaCoyan/tiktok-clone-nextjs/main/utils/Tiktik4.PNG)
 
-# See the live version 🔗[Here](https://tiktok-clone-nextjs-five.vercel.app/)🔗
-
 # To-Do
 
 </div>
